@@ -32,6 +32,47 @@ namespace StudentIMS.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(Student obj)
+        {
+            if(obj.Name == obj.Surname)
+            {
+                ModelState.AddModelError("Name", "Name and surname can't be same");
+            }
+
+
+            if (ModelState.IsValid)
+            {
+                _db.Students.Add(obj);
+                _db.SaveChanges();
+                TempData["success"] = "New record added succesfully";
+                return RedirectToAction("StudentList","Student");   
+            }
+            return View();  
+
+        }
+
+
+        public IActionResult Edit(int Id)
+        {
+            Student obj = _db.Students.Find(Id);
+
+            if (obj is not null)
+            {
+                return View(obj);
+
+            }else
+            {
+                return NotFound(); 
+            }
+        }
+
+
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -36,6 +36,13 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+
+             @if (TempData["success"] != null)
+            {
+                <div style="position:fixed; top:20px; right:20px; z-index:1000;">
+                    <partial name="_SuccessNotification" />
+                </div>                
+            }
             @RenderBody()
         </main>
     </div>
