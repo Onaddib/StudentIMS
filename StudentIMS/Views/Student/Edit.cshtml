@@ -5,12 +5,15 @@
 
 	<div class="text-center">
 
-	<h1 class="display-5">Create New Student Record</h1>
+	<h1 class="display-5">Edit Student Record</h1>
 	</div>
 
 	<div asp-validation-summary="All"></div>
 
 	<form method="post">
+
+		<input asp-for="Id" hidden/>
+
 		<div class="form-floating py-2">
 			<input asp-for="Name" type="text" class="form-control" />
 			<label asp-for="Name" class="form-label"></label>
@@ -36,7 +39,7 @@
 		</div>
 
 		<div class="py-2">
-			<button type="submit" class="btn btn-primary form-control">Create</button>
+			<button type="submit" class="btn btn-primary form-control">Update</button>
 		</div>
 
 </form>

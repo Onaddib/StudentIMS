@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using StudentIMS.Data;
 using StudentIMS.Models;
 
@@ -68,10 +69,66 @@ namespace StudentIMS.Controllers
         }
 
 
-        public IActionResult Delete()
+        [HttpPost]
+        public IActionResult Edit(Student obj)
         {
-            return View();
+
+            if(obj is not null)
+            {
+                _db.Students.Update(obj);
+                _db.SaveChanges();
+                TempData["Success"] = "Record Updated Successfully";
+                return RedirectToAction("StudentList", "Student");
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+         
         }
+
+
+        public IActionResult Delete(int Id)
+        {
+            Student obj = _db.Students.Find(Id);
+
+            if (obj is not null)
+            {
+                return View(obj);
+
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Delete(Student obj)
+        {
+
+            if (obj is not null)
+            {
+                _db.Students.Remove(obj);
+                _db.SaveChanges();
+                TempData["Success"] = "Record Deleted Successfully";
+                return RedirectToAction("StudentList", "Student");
+            }
+            else
+            {
+                return NotFound();
+            }
+
+
+        }
+
+
+
+
+
 
         public IActionResult Privacy()
         {
