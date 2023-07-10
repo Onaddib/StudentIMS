@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudentIMS.Models
+namespace Models.Models
 {
     public class Student
     {

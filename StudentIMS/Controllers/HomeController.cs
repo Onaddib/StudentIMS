@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StudentIMS.Models;
 using System.Diagnostics;
+using Models.Models;
+using DataAccess.Data;
 
 namespace StudentIMS.Controllers
 {

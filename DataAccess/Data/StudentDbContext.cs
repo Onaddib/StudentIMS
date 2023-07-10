@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentIMS.Models;
+using Models.Models;
 
-namespace StudentIMS.Data
+namespace DataAccess.Data
 {
     public class StudentDbContext: DbContext
     {

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace StudentIMS.Migrations
+namespace DataAccess.Migrations
 {
     public partial class student_table_added : Migration
     {

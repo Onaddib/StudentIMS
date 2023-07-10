@@ -2,12 +2,12 @@
 
 #nullable disable
 
-namespace StudentIMS.Migrations
+namespace DataAccess.Migrations
 {
     public partial class some_students_addes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        {  
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "Age", "Name", "StudentNumber", "Surname" },

@@ -1,18 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using StudentIMS.Data;
-using StudentIMS.Models;
+using DataAccess.Data;
+using Models.Models;
+using DataAccess.Data.Repository;
+
 
 namespace StudentIMS.Controllers
 {
     public class StudentController : Controller
     {
 
+        private readonly IStudentRepository _stdRepo;
 
-        private readonly StudentDbContext _db;
-        public StudentController(StudentDbContext db) {
-            _db = db;
+        public StudentController(IStudentRepository stdRepo) {
+            _stdRepo = stdRepo;
         }
+
+
 
 
 
@@ -24,7 +28,7 @@ namespace StudentIMS.Controllers
 
         public IActionResult StudentList()
         {
-            List<Student> studentList = _db.Students.ToList();
+            List<Student> studentList = _stdRepo.GetAll().ToList();
             return View(studentList);
         }
 
@@ -44,8 +48,8 @@ namespace StudentIMS.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Students.Add(obj);
-                _db.SaveChanges();
+                _stdRepo.Add(obj);
+                _stdRepo.Save();
                 TempData["success"] = "New record added succesfully";
                 return RedirectToAction("StudentList","Student");   
             }
@@ -54,9 +58,9 @@ namespace StudentIMS.Controllers
         }
 
 
-        public IActionResult Edit(int Id)
+        public IActionResult Edit(int id)
         {
-            Student obj = _db.Students.Find(Id);
+            Student obj = _stdRepo.Get(o => o.Id==id);
 
             if (obj is not null)
             {
@@ -75,8 +79,8 @@ namespace StudentIMS.Controllers
 
             if(obj is not null)
             {
-                _db.Students.Update(obj);
-                _db.SaveChanges();
+                _stdRepo.Update(obj);
+                _stdRepo.Save();
                 TempData["Success"] = "Record Updated Successfully";
                 return RedirectToAction("StudentList", "Student");
             }
@@ -89,9 +93,9 @@ namespace StudentIMS.Controllers
         }
 
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            Student obj = _db.Students.Find(Id);
+            Student obj = _stdRepo.Get(o => o.Id == id);
 
             if (obj is not null)
             {
@@ -112,8 +116,8 @@ namespace StudentIMS.Controllers
 
             if (obj is not null)
             {
-                _db.Students.Remove(obj);
-                _db.SaveChanges();
+                _stdRepo.Delete(obj);
+                _stdRepo.Save();
                 TempData["Success"] = "Record Deleted Successfully";
                 return RedirectToAction("StudentList", "Student");
             }

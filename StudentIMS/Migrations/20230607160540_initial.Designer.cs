@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StudentIMS.Data;
+using DataAccess.Data;
 
 #nullable disable
 
-namespace StudentIMS.Migrations
+namespace DataAccess.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
     [Migration("20230607160540_initial")]
