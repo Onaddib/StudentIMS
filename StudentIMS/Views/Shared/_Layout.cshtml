@@ -20,13 +20,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Student" asp-action="Index">Home Admin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="StudentList">Student List</a>
+                            <a class="nav-link text-dark" asp-area="Client" asp-controller="Home" asp-action="Index">Home Client</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Student" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="Client" asp-controller="Home" asp-action="Privacy">Home Privacy Client</a>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Select
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Student" asp-action="StudentList" selected>Student List</a></li>
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Department" asp-action="DepartmentList">Department List</a></li>
+                                </ul>
+                            </div>
                         </li>
                      
                     </ul>

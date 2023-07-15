@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Data.Repository
 {
-    internal interface IUnitOfWork
+    public  interface IUnitOfWork
     {
 
 
         IStudentRepository StudentRepository { get; set; }
+
+        IDepartmentRepository DepartmentRepository { get; set; }
         void Save();
 
     }

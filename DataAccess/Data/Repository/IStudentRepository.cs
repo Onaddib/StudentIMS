@@ -9,7 +9,7 @@ namespace DataAccess.Data.Repository
 {
     public interface IStudentRepository : IRepository<Student>
     {
-        void Save();
+        
 
         void Update(Student obj);
 

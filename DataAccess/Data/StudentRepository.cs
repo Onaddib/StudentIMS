@@ -22,10 +22,7 @@ namespace DataAccess.Data
          
 
 
-        public void Save()
-        {
-         _db.SaveChanges();
-        }
+      
 
         public void Update(Student obj)
         {

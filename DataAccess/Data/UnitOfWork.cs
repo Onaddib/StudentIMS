@@ -11,16 +11,20 @@ namespace DataAccess.Data
     {
         private readonly StudentDbContext _db;
 
+        public IStudentRepository StudentRepository { get; set; }
+        public IDepartmentRepository DepartmentRepository { get; set; }
+
         public UnitOfWork(StudentDbContext db)
         {
             _db = db;
+            StudentRepository = new StudentRepository(_db);
+            DepartmentRepository = new DepartmentRepository(_db);
         }
 
-        public IStudentRepository StudentRepository { get; set; }
 
         public void Save()
-        {
-            throw new NotImplementedException();
+        {   
+            _db.SaveChanges();
         }
     }
 }

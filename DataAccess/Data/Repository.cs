@@ -21,7 +21,7 @@ namespace DataAccess.Data
             _dbSet = db.Set<T>();
         }
 
-
+        
         public T Get(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = _dbSet;
@@ -29,7 +29,7 @@ namespace DataAccess.Data
             return query.FirstOrDefault();
 
         }
-
+        
 
         public void Add(T obj)
         {
