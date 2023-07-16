@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "K9197TRdcEXMYZPci1m39J9+lYYAl9Ws3eiPTBysfF0=",
+  "Hash": "AkCHmVkBtcjkA71Yy2Z5h8cPr6NO14r8RmdvEF7kBPM=",
   "Source": "StudentIMS",
   "BasePath": "_content/StudentIMS",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Onatt\\Desktop\\StudentIMS\\StudentIMS\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\StudentIMS.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Onatt\\Desktop\\StudentIMS\\StudentIMS\\wwwroot\\2023.02.02 (6).jpg",
+      "SourceId": "StudentIMS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Onatt\\Desktop\\StudentIMS\\StudentIMS\\wwwroot\\",
+      "BasePath": "_content/StudentIMS",
+      "RelativePath": "2023.02.02 (6).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\2023.02.02 (6).jpg"
     },
     {
       "Identity": "C:\\Users\\Onatt\\Desktop\\StudentIMS\\StudentIMS\\wwwroot\\css\\site.css",

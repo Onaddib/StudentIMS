@@ -47,6 +47,7 @@ namespace DataAccess.Data
                     Surname = "Dae",
                     StudentNumber = 123456,
                     Age = 20,
+                    ImageUrl = "",
                     DepartmentId = 1
 
 
@@ -59,6 +60,7 @@ namespace DataAccess.Data
                     Surname = "Dalton",
                     StudentNumber = 258369,
                     Age = 21,
+                    ImageUrl = "",
                     DepartmentId = 1
 
 
@@ -72,6 +74,7 @@ namespace DataAccess.Data
                     Surname = "Wise",
                     StudentNumber = 259354,
                     Age = 19,
+                    ImageUrl = "",
                     DepartmentId = 1,
 
 
@@ -85,6 +88,7 @@ namespace DataAccess.Data
                     Surname = "Willer",
                     StudentNumber = 685478,
                     Age = 22,
+                    ImageUrl = "",
                     DepartmentId = 1
     
 

@@ -69,6 +69,10 @@ namespace DataAccess.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -92,6 +96,7 @@ namespace DataAccess.Migrations
                             Id = 1,
                             Age = 20,
                             DepartmentId = 1,
+                            ImageUrl = "",
                             Name = "John",
                             StudentNumber = 123456,
                             Surname = "Dae"
@@ -101,6 +106,7 @@ namespace DataAccess.Migrations
                             Id = 2,
                             Age = 21,
                             DepartmentId = 1,
+                            ImageUrl = "",
                             Name = "Sam",
                             StudentNumber = 258369,
                             Surname = "Dalton"
@@ -110,6 +116,7 @@ namespace DataAccess.Migrations
                             Id = 3,
                             Age = 19,
                             DepartmentId = 1,
+                            ImageUrl = "",
                             Name = "Paul",
                             StudentNumber = 259354,
                             Surname = "Wise"
@@ -119,6 +126,7 @@ namespace DataAccess.Migrations
                             Id = 4,
                             Age = 22,
                             DepartmentId = 1,
+                            ImageUrl = "",
                             Name = "Stacy",
                             StudentNumber = 685478,
                             Surname = "Willer"

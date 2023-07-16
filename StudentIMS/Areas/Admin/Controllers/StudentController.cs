@@ -13,17 +13,14 @@ namespace StudentIMS.Areas.Admin.Controllers
     {
 
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public StudentController(IUnitOfWork unitOfWork)
+        public StudentController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
 
             _unitOfWork = unitOfWork;
-
+            _webHostEnvironment = webHostEnvironment;
         }
-
-
-
-
 
         public IActionResult Index()
         {
@@ -39,30 +36,47 @@ namespace StudentIMS.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
+            StudentViewModel _studentViewModel = new StudentViewModel();
 
             IEnumerable<SelectListItem> DepartmentList = _unitOfWork.DepartmentRepository.GetAll().Select(i => new SelectListItem
             {
                 Text = i.Depart,
                 Value = i.Id.ToString()
             });
-
-            ViewData["DepartmentList"] = DepartmentList;
+            _studentViewModel.DepartmentList = DepartmentList;
+            _studentViewModel.Student = new Student();
+           // ViewData["DepartmentList"] = DepartmentList;
             //ViewBag.DepartmentList = DepartmentList;
-            return View();
+            return View(_studentViewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(Student obj)
+        public IActionResult Create(StudentViewModel obj, IFormFile? file)
         {
-            if (obj.Name == obj.Surname)
+            if (file is not null)
             {
-                ModelState.AddModelError("Name", "Name and surname can't be same");
-            }
+                string wwwpathName = _webHostEnvironment.WebRootPath;
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string productPattern = Path.Combine(wwwpathName+@"\images\",fileName);
+                using (FileStream fs = new FileStream(productPattern, FileMode.Create))
+                {
+                    file.CopyTo(fs);
+                }
 
+                obj.Student.ImageUrl = @"\images\"+fileName;
+            }
+            /*
+             IEnumerable<SelectListItem> DepartmentList = _unitOfWork.DepartmentRepository.GetAll().Select(i => new SelectListItem
+             {
+                 Text = i.Depart,
+                 Value = i.Id.ToString()
+             });
+             obj.DepartmentList = DepartmentList;
+             */
 
             if (ModelState.IsValid)
             {
-                _unitOfWork.StudentRepository.Add(obj);
+                _unitOfWork.StudentRepository.Add(obj.Student);
                 _unitOfWork.Save();
                 TempData["success"] = "New record added succesfully";
                 return RedirectToAction("StudentList", "Student");
@@ -75,8 +89,10 @@ namespace StudentIMS.Areas.Admin.Controllers
                     Value = i.Id.ToString()
                 });
 
-                ViewData["DepartmentList"] = DepartmentList;
-                //ViewBag.DepartmentList = DepartmentList;
+                obj.DepartmentList = DepartmentList;
+
+                // ViewData["DepartmentList"] = DepartmentList;
+                //ViewBag.DepartmentList = DepartmentList; 
 
                 return View();
 

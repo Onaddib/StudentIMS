@@ -28,6 +28,10 @@ namespace Models.Models
         public int DepartmentId { get; set; }
 
         [ValidateNever]
+        public string ImageUrl { get; set; }
+
+
+        [ValidateNever]
         [ForeignKey("DepartmentId")]
 
         public Department Department { get; set; } 
